@@ -1,35 +1,59 @@
 ---
-description: Apply React Native best practices for component design, state management, styling, and performance when developing mobile apps in `apps/frontend`.
+description: Apply comprehensive React Native best practices for code structure, state, styling, and performance in `apps/frontend`.
 globs: apps/frontend/**/*.tsx
 alwaysApply: false
 ---
 
-Component Design:
-- Use functional components
-- Type `props` and `state`
-- Avoid anonymous functions in JSX
-- Extract platform code with `Platform.select`
+General:
+- Use TypeScript everywhere
+- Prefer functional components
+- Keep feature-based folders
+
+Files:
+- Name components with PascalCase
+- Co-locate styles and tests
+- Use module aliases for imports
+
+Component Architecture:
+- Smart components handle logic
+- Dumb components display only
+- Place displayName at bottom
+- Return null if props missing
+- Avoid default export
+- One component per file
+- Extract platform code with Platform.select
 
 State Management:
-- Delegate state and logic to a smart component.
-- Declare calculated variables at the top (dumb component).
-- Place `displayName` at the bottom of the file.
-- Do not use default export.
-- Return `null` if mandatory props are missing.
-- One component per file (except tiny private components).
-- Lift shared state up.
-- Handle async logic with hooks.
-- Clean up subscriptions on unmount.
+- Delegate state to smart components
+- Use hooks for async logic
+- Clean up subscriptions on unmount
+- Lift shared state up
 
 Styling:
-- Use `StyleSheet.create`.
-- Prefer Flexbox layout.
-- Reuse style constants.
-- Keep style files near components.
-- Prefer native components and platform styles when available.
+- Use StyleSheet.create
+- Prefer flexbox layout
+- Reuse platform style constants
+- Keep styles near components
+- Avoid global styles
 
 Performance:
-- Prefer `FlatList` for lists
+- Use FlatList for lists
 - Memoize heavy components
-- Use `useCallback` for handlers
+- Use useCallback for handlers
 - Lazy load screens
+- Debounce expensive calls
+
+Security:
+- Validate and sanitize input
+- Use HTTPS for APIs
+- Securely store secrets
+
+Testing:
+- Unit test with Jest
+- End-to-end test with Detox
+- Keep tests near code
+
+Tooling:
+- Use VS Code with React Native Tools
+- Lint and format with ESLint and Prettier
+- Integrate CI/CD for builds

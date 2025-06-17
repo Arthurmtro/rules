@@ -1,21 +1,30 @@
 ---
-description: Apply Zustand best practices for state management, performance, and reusability in `apps/frontend`.
+description: Apply Zustand best practices for organized stores, performance, and reusability in `apps/frontend`.
 globs: apps/frontend/**/*.tsx
 alwaysApply: false
 ---
 
-Store Setup:
-- Define stores with `create`.
-- Split state into feature slices for maintainability.
-- Type state and actions explicitly.
-- Use middleware for persistence and debugging.
+Organization:
+- Keep stores in store folder
+- One store per file
+- Use slices for large stores
 
-Selectors and Getters:
-- Export typed selectors for store values.
-- Prefer selectors with `shallow` when selecting multiple fields.
-- Derive data with selectors instead of duplicating state.
+Setup:
+- Define stores with create
+- Type state and actions
+- Add middleware for persist and devtools
 
-Performance and Testing:
-- Use partial state selectors with `useStore` to minimize re-renders.
-- Read current state inside actions with `getState`.
-- Reset store between tests for isolation.
+Selectors and Actions:
+- Export typed selectors
+- Use shallow equality for objects
+- Derive values instead of duplicating
+- Access state via getState inside actions
+
+Performance:
+- Select partial state with useStore
+- Memoize heavy selectors
+- Lazy load stores when possible
+
+Testing:
+- Reset stores between tests
+- Mock external requests
